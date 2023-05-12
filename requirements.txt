@@ -1,3 +1,11 @@
 spotipy
 scikit-learn
 sklearn
+pandas
+streamlit
+json
+pysqlite3
+numpy
+time
+random
+Pillow
