@@ -17,6 +17,15 @@ conn = sqlite3.connect('list.bdd')
 resultats = []
 
 # INIT FONCTION 
+def create_playlist_db(db_file):
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+    cursor.execute('''CREATE TABLE IF NOT EXISTS playlist
+                      (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       track_id TEXT NOT NULL,
+                       more TEXT NOT NULL)''')
+    conn.commit()
+    return conn
 def add_logo():
     st.markdown(
         """
@@ -46,12 +55,22 @@ def get_sound_urls(id):
     if type(track_info.iloc[0]) == str:
         st.audio(track_info.iloc[0])
 add_logo()
-
+create_playlist_db('list.bdd')
 # Afficher la playlist
 
 c = conn.cursor()
-c.execute('SELECT * FROM playlist')
-playlist = c.fetchall()
+
+c.execute('SELECT DISTINCT more FROM playlist')
+resultats = c.fetchall()
+liste_more = [row[0] for row in resultats]
+liste_more=st.selectbox('selectionne ta playlist : ', liste_more)
+
+if liste_more:
+    c.execute('SELECT * FROM playlist WHERE more = ?', (liste_more,))
+    playlist = c.fetchall()
+else:
+    c.execute('SELECT * FROM playlist WHERE more="racine"')
+    playlist = c.fetchall()
 
 df_bd = pd.DataFrame(playlist, columns=['id', 'track_id', 'more'])
 
@@ -68,6 +87,8 @@ for index, row in df_bd.iterrows():
 
 if len(likeId) == 0:
     st.header('La playlist est vide')
+else:
+    st.header(liste_more)
 
 
 sum_ms = 0

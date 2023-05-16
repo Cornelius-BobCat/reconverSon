@@ -6,7 +6,6 @@ import sqlite3
 
 curl = 'https://open.spotify.com/track/'
 heart = 'img/heart.png'
-check = 'https://i.ibb.co/thyXK5c/check.png'
 
 if "select_genre" in st.session_state:
     del(st.session_state.select_genre)
@@ -41,7 +40,7 @@ def add_logo():
         unsafe_allow_html=True,
     )
 
-def add_track_to_playlist(conn, track_id, more=''):
+def add_track_to_playlist(conn, track_id, more='racine'):
     cursor = conn.cursor()
     cursor.execute("INSERT INTO playlist (track_id, more) VALUES (?,?)", (track_id,more))
     conn.commit()
@@ -107,7 +106,7 @@ if "fortune" in st.session_state:
 
             if st.button("like"):
                 add_track_to_playlist(db_conn, df[df['image_url'] == ii]['track_id'].iloc[0])
-                st.write(f"""<img src="{check}" width="15px"> """, unsafe_allow_html=True)
+                st.write('Ajouter à playlist')
     
 else:
     col1, col2, col3 = st.columns([1, 3, 1])
