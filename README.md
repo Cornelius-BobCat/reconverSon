@@ -2,7 +2,7 @@
 
 Vainqueur Technique Hackaton Wild 2023
 
-- 24h pour penser une problematique et réalisé un projet.
+- 24h pour penser une problématique et réaliser un projet.
 - Théme "Musique"
 
 ## La problématique 
@@ -25,4 +25,4 @@ Nous allons fournir à notre client fictif une solution de recommandation basé 
 - Ajouter un bdd users pour capter les preferences d'écoute des auditeurs
 - Faire evoluer l'algo de recommandation avec l'aspect collaboratif des nouvelles données
 - Utiliser un flux direct avec l'API spotify en remplacement d'un dataSet en CSV.
-- Concevoir une API pour un accés direct du client à leurs données ( playlist) depuis leurs plateformes de diffusion
+- Concevoir une API pour un accés direct du client à leurs données ( playlist) depuis leur plateforme de diffusion
