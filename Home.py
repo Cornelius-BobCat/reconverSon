@@ -67,7 +67,7 @@ def create_playlist_db(db_file):
     conn.commit()
     return conn
 
-def add_track_to_playlist(conn, track_id, more=''):
+def add_track_to_playlist(conn, track_id, more='racine'):
     cursor = conn.cursor()
     cursor.execute("INSERT INTO playlist (track_id, more) VALUES (?,?)", (track_id,more))
     conn.commit()
@@ -421,3 +421,5 @@ else:
 
 # Fermeture de la connexion à la base de données
 db_conn.close()
+
+
