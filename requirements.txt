@@ -2,3 +2,4 @@ spotify
 scikit-learn
 sqlite3
 streamlit
+pip
