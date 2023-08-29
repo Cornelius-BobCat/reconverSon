@@ -1,5 +1,5 @@
 spotify
 scikit-learn
-sqlite3
+sqlite
 streamlit
 pip
