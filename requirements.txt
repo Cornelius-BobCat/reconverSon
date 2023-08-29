@@ -1,3 +1,4 @@
-spotipy
+spotify
 scikit-learn
-sklearn
+sqlite3
+streamlit
